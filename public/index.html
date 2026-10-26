@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Учёт рабочего времени</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <header class="page-header">
+      <h1>Учёт рабочего времени</h1>
+      <p class="clock" id="now" aria-live="off"></p>
+    </header>
+
+    <main class="layout">
+      <section class="panel" aria-labelledby="employees-title">
+        <h2 id="employees-title">Сотрудники</h2>
+
+        <form id="employee-form" class="inline-form">
+          <label for="employee-name" class="visually-hidden">Имя сотрудника</label>
+          <input id="employee-name" name="name" maxlength="100" placeholder="Имя сотрудника" required />
+          <button type="submit">Добавить</button>
+        </form>
+
+        <ul id="employees" class="employees"></ul>
+        <p id="employees-empty" class="empty" hidden>
+          Пока никого нет. Добавьте первого сотрудника, чтобы запустить таймер.
+        </p>
+      </section>
+
+      <section class="panel" aria-labelledby="report-title">
+        <h2 id="report-title">Отчёт за период</h2>
+
+        <form id="report-form" class="report-form">
+          <div class="presets" role="group" aria-label="Быстрый выбор периода">
+            <button type="button" class="ghost" data-preset="today">Сегодня</button>
+            <button type="button" class="ghost" data-preset="last7">7 дней</button>
+            <button type="button" class="ghost" data-preset="month">Этот месяц</button>
+          </div>
+          <div class="dates">
+            <label>С <input type="date" id="from" required /></label>
+            <label>По <input type="date" id="to" required /></label>
+            <button type="submit">Показать</button>
+          </div>
+        </form>
+
+        <div id="report" aria-live="polite"></div>
+      </section>
+    </main>
+
+    <div id="toast" class="toast" role="alert" hidden></div>
+
+    <template id="employee-template">
+      <li class="employee">
+        <div class="employee-head">
+          <span class="employee-name"></span>
+          <span class="elapsed"></span>
+        </div>
+        <form class="timer-form">
+          <input name="description" maxlength="200" placeholder="Над чем работаете?" />
+          <button type="submit" class="start">Старт</button>
+        </form>
+        <div class="running-row">
+          <span class="running-task"></span>
+          <button type="button" class="stop">Стоп</button>
+        </div>
+      </li>
+    </template>
+
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>

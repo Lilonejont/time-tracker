@@ -1,0 +1,15 @@
+{
+  "name": "time-tracker",
+  "version": "1.0.0",
+  "description": "Учёт рабочего времени сотрудников: таймеры, записи и отчёт за период",
+  "type": "module",
+  "private": true,
+  "engines": {
+    "node": ">=22.13"
+  },
+  "scripts": {
+    "start": "node --disable-warning=ExperimentalWarning src/index.js",
+    "test": "node --disable-warning=ExperimentalWarning --test \"test/*.test.js\"",
+    "seed": "node --disable-warning=ExperimentalWarning src/seed.js"
+  }
+}
